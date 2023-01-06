@@ -1,3 +1,9 @@
+@import "./helpers";
+
+:root {
+  font-size: 16px;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -6,4 +12,7 @@ html,
 body {
   // Display and Box Model
   height: 100%;
+
+  // Others
+  font-family: $font;
 }

@@ -9,6 +9,8 @@ import SignUp from "./SignUp";
 import AddMedicine from "./AddMedicine";
 import ManageMedicines from "./ManageMedicines";
 
+import AppContext from "./AppContext";
+
 import "./index.scss";
 
 const router = createBrowserRouter([
@@ -37,6 +39,8 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AppContext.Provider value={{}}>
+      <RouterProvider router={router} />
+    </AppContext.Provider>
   </React.StrictMode>
 );

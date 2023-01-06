@@ -1,5 +1,5 @@
 function App() {
-  return <div>This is the MedsTracker App</div>;
+  return <p>This is the main App route</p>;
 }
 
 export default App;

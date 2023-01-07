@@ -5,8 +5,9 @@ export default function SelectInput({ className, options, onChange }) {
     <select
       className={`meds-select ${className}`}
       onChange={(e) => onChange(e.currentTarget.value)}
+      selected="select"
     >
-      <option selected={true} disabled={true}>
+      <option value="select" disabled={true}>
         Select
       </option>
       {options.map(({ value, label }, index) => (

@@ -37,7 +37,13 @@ const router = createBrowserRouter([
 
 export default function AppWrapper() {
   const [user, setUser] = useState({});
-  const [medicines, setMedicines] = useState([]);
+  const [medicines, setMedicines] = useState([
+    {
+      name: "Sizopin",
+      quantity: 200,
+      time: "Morning (8pm)",
+    },
+  ]);
 
   return (
     <AppContext.Provider

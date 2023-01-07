@@ -5,12 +5,13 @@
   padding: 16px;
 
   // Others
+  cursor: pointer;
   outline: none;
   border: none;
   background-color: $secondary;
   color: white;
   border-radius: 32px;
   text-transform: uppercase;
-  font-weight: medium;
+  font-weight: 700;
   font-size: 1rem;
 }

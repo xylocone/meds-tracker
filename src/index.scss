@@ -12,7 +12,19 @@ html,
 body {
   // Display and Box Model
   height: 100%;
+  margin: 0;
 
   // Others
   font-family: $font-family;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  // Display and Box Model
+  margin: 0;
 }

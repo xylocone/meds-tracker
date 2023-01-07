@@ -37,13 +37,39 @@ const router = createBrowserRouter([
 
 export default function AppWrapper() {
   const [user, setUser] = useState({});
-  const [medicines, setMedicines] = useState([
-    {
-      name: "Sizopin",
-      quantity: 200,
-      time: "Morning (8pm)",
-    },
-  ]);
+  const [medicines, setMedicines] = useState(initMedicines());
+  function initMedicines() {
+    return [
+      {
+        name: "Sizopin",
+        quantity: 50,
+        time: "Morning (8am)",
+      },
+      {
+        name: "Paracetamol",
+        quantity: 200,
+        time: "Afternoon (12pm)",
+      },
+      {
+        name: "Aripiprazole",
+        quantity: 150,
+        time: "Evening (4pm)",
+      },
+      {
+        name: "Pacitane",
+        quantity: 200,
+        time: "Night (8pm)",
+      },
+    ];
+  }
+
+  function updateMedicines(newMedicines) {
+    const oldMedicines = medicines;
+    setMedicines(newMedicines);
+
+    // also synchronize medicine data with the server,
+    // and if the synchronization fails, revert medicines to oldMedicines
+  }
 
   return (
     <AppContext.Provider
@@ -51,7 +77,7 @@ export default function AppWrapper() {
         user,
         setUser,
         medicines,
-        setMedicines,
+        updateMedicines,
       }}
     >
       <RouterProvider router={router} />

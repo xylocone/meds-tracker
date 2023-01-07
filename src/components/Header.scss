@@ -1,0 +1,11 @@
+@import "../helpers";
+
+.meds-header {
+  // Display and Box Model
+  padding: 32px 16px;
+
+  // Others
+  color: #fff;
+  background-color: $primary;
+  font-size: 1.5rem;
+}

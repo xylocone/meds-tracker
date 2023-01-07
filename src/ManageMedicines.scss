@@ -1,0 +1,59 @@
+.manage-meds {
+  .meds-wrapper {
+    // Display and Box Model
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+
+    padding: 32px;
+
+    .meds-medicine {
+      // Display and Box Model
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      gap: 16px;
+
+      width: 100%;
+      max-width: 600px;
+
+      padding: 16px;
+
+      // Others
+      background-color: #fff;
+      border-radius: 4px;
+      box-shadow: 0 0 2px #888;
+
+      .meds-medicine__title {
+        // Display and Box Model
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        // Others
+        font-size: 1.25rem;
+        text-transform: uppercase;
+        font-weight: bold;
+      }
+
+      .meds-medicine__details {
+        // Display and Box Model
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+
+        // Others
+        font-size: 1.2rem;
+
+        .meds-medicine__quantity,
+        .meds-medicine__time {
+          // Display and Box Model
+          display: inline-flex;
+          align-items: center;
+          gap: 4px;
+        }
+      }
+    }
+  }
+}

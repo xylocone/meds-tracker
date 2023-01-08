@@ -1,5 +1,5 @@
-import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useEffect } from "react";
+import { useNavigate, Link } from "react-router-dom";
 
 // Icons
 import { CiPill } from "react-icons/ci";
@@ -13,11 +13,19 @@ import "./App.scss";
 import AppContext from "./AppContext";
 
 export default function App() {
-  const { medicines } = useContext(AppContext);
+  const { user, medicines } = useContext(AppContext);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!user.username || !user.pwd) {
+      navigate("/login");
+    }
+  }, []);
 
   return (
     <div className="app">
-      <Jumbotron />
+      <Jumbotron name={user.name} />
       <div className="meds-wrapper">
         {medicines.map(({ name, quantity, time }, index) => (
           <Medicine key={index} name={name} quantity={quantity} time={time} />
@@ -27,12 +35,12 @@ export default function App() {
   );
 }
 
-function Jumbotron() {
+function Jumbotron({ name }) {
   return (
     <div className="meds-jumbotron">
       <h1 className="meds-jumbotron__heading">
-        Hi, <br />
-        John Doe!
+        Hi <br />
+        {name}
       </h1>
       <Link to={"/manage"}>
         <Button className="meds-jumbotron__button">

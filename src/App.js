@@ -17,11 +17,14 @@ export default function App() {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!user.username || !user.pwd) {
-      navigate("/login");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (
+  //     !localStorage.getItem("meds-username") ||
+  //     !localStorage.getItem("meds-pwd")
+  //   ) {
+  //     navigate("/login");
+  //   }
+  // }, []);
 
   return (
     <div className="app">

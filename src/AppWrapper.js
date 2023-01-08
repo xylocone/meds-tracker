@@ -43,12 +43,12 @@ export default function AppWrapper() {
   });
   const [medicines, setMedicines] = useState([]);
 
-  useEffect(() => {
-    (async () => {
-      setUser(await initUser());
-      setUser(await initMedicines());
-    })();
-  }, []);
+  // useEffect(() => {
+  //   (async () => {
+  //     setUser(await initUser());
+  //     setUser(await initMedicines());
+  //   })();
+  // }, []);
 
   async function initUser() {
     const username = localStorage.getItem("meds-username");
@@ -161,26 +161,26 @@ export default function AppWrapper() {
   }
 
   async function updateMedicines(newMedicines) {
-    const { username, pwd } = user;
+    // const { username, pwd } = user;
 
-    const payload = {
-      username,
-      pwd,
-      medicines: newMedicines,
-    };
+    // const payload = {
+    //   username,
+    //   pwd,
+    //   medicines: newMedicines,
+    // };
 
-    const response = await fetch("/api.php/update-meds", {
-      method: "POST",
-      body: JSON.stringify(payload),
-    });
+    // const response = await fetch("/api.php/update-meds", {
+    //   method: "POST",
+    //   body: JSON.stringify(payload),
+    // });
 
-    if (!response.ok) {
-      return;
-    }
+    // if (!response.ok) {
+    //   return;
+    // }
 
-    const json = await response.json();
+    // const json = await response.json();
 
-    setMedicines(json);
+    setMedicines(newMedicines);
   }
 
   return (

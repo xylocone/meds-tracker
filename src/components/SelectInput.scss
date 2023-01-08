@@ -1,0 +1,14 @@
+.meds-select {
+  // Display and Box Model
+  padding: 16px;
+
+  // Others
+  border-radius: 4px;
+  text-transform: uppercase;
+  border: none;
+  box-shadow: 0 0 2px #888;
+
+  &:focus {
+    outline: none;
+  }
+}

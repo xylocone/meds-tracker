@@ -1,0 +1,97 @@
+@import "./helpers";
+
+.app {
+  .meds-jumbotron {
+    // Positioning
+    position: relative;
+
+    // Display and Box Model
+    display: flex;
+    align-items: center;
+    height: 30vh;
+    padding: 32px;
+
+    @media screen and (min-width: 768px) {
+      height: 50vh;
+      justify-content: center;
+      text-align: center;
+    }
+
+    // Others
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+    background-color: $primary;
+
+    .meds-jumbotron__button {
+      // Positioning
+      position: absolute;
+      top: 16px;
+      right: 16px;
+
+      // Display and Box Model
+      display: inline-flex;
+      gap: 4px;
+    }
+
+    .meds-jumbotron__heading {
+      // Others
+      color: #fff;
+
+      @media screen and (min-width: 768px) {
+        font-size: 3rem;
+      }
+    }
+  }
+
+  .meds-wrapper {
+    // Display and Box Model
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+
+    padding: 32px;
+
+    .meds-medicine {
+      // Display and Box Model
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      gap: 16px;
+
+      width: 100%;
+      max-width: 600px;
+
+      padding: 16px;
+
+      // Others
+      background-color: #fff;
+      border-radius: 4px;
+      box-shadow: 0 0 2px #888;
+
+      .meds-medicine__title {
+        // Others
+        font-size: 1.25rem;
+        text-transform: uppercase;
+        font-weight: bold;
+      }
+
+      .meds-medicine__details {
+        // Display and Box Model
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+
+        // Others
+        font-size: 1.2rem;
+
+        .meds-medicine__quantity,
+        .meds-medicine__time {
+          // Display and Box Model
+          display: inline-flex;
+          align-items: center;
+          gap: 4px;
+        }
+      }
+    }
+  }
+}

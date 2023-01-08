@@ -1,0 +1,33 @@
+.add-medicine {
+  // Display and Box Model
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 100vh;
+
+  .add-medicine__header {
+    // Display and Box Model
+    width: 100%;
+  }
+
+  .add-medicine__add-button {
+    // Display and Box Model
+    width: 100%;
+
+    // Others
+    border-radius: 0;
+  }
+
+  .add-medicine__inputs-wrapper {
+    // Display and Box Model
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    width: 100%;
+    max-width: 600px;
+    padding: 32px;
+  }
+}

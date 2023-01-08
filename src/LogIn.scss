@@ -1,0 +1,43 @@
+.meds-login {
+  // Display and Box Model
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  // Display and Box Model
+  height: 100vh;
+
+  .meds-login__header {
+    // Positioning
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    // Display and Box Model
+    width: 100%;
+  }
+
+  .meds-login__inputs-wrapper {
+    // Display and Box Model
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+
+    .meds-login__buttons-wrapper {
+      // Display and Box Model
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 4px;
+
+      .meds-login__signup-button {
+        // Others
+        background: transparent;
+        color: #000;
+      }
+    }
+  }
+}

@@ -87,7 +87,7 @@ export default function AppWrapper() {
       pwd,
     };
 
-    const response = await fetch("/login", {
+    const response = await fetch("/api.php/login", {
       method: "POST",
       body: JSON.stringify(payload),
     });
@@ -116,7 +116,7 @@ export default function AppWrapper() {
       pwd,
     };
 
-    const response = await fetch("/signup", {
+    const response = await fetch("/api.php/signup", {
       method: "POST",
       body: JSON.stringify(payload),
     });
@@ -146,7 +146,7 @@ export default function AppWrapper() {
       pwd,
     };
 
-    const response = await fetch("/get-meds", {
+    const response = await fetch("/api.php/get-meds", {
       method: "POST",
       body: JSON.stringify(payload),
     });
@@ -169,7 +169,7 @@ export default function AppWrapper() {
       medicines: newMedicines,
     };
 
-    const response = await fetch("/update-meds", {
+    const response = await fetch("/api.php/update-meds", {
       method: "POST",
       body: JSON.stringify(payload),
     });

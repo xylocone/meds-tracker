@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 // Internal dependencies
@@ -36,46 +36,159 @@ const router = createBrowserRouter([
 ]);
 
 export default function AppWrapper() {
-  const [user, setUser] = useState({});
-  const [medicines, setMedicines] = useState(initMedicines());
-  function initMedicines() {
-    return [
-      {
-        name: "Sizopin",
-        quantity: 50,
-        time: "Morning (8am)",
-      },
-      {
-        name: "Paracetamol",
-        quantity: 200,
-        time: "Afternoon (12pm)",
-      },
-      {
-        name: "Aripiprazole",
-        quantity: 150,
-        time: "Evening (4pm)",
-      },
-      {
-        name: "Pacitane",
-        quantity: 200,
-        time: "Night (8pm)",
-      },
-    ];
+  const [user, setUser] = useState({
+    username: "",
+    pwd: "",
+    name: "",
+  });
+  const [medicines, setMedicines] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      setUser(await initUser());
+      setUser(await initMedicines());
+    })();
+  }, []);
+
+  async function initUser() {
+    const username = localStorage.getItem("meds-username");
+    const pwd = localStorage.getItem("meds-pwd");
+
+    const payload = {
+      username,
+      pwd,
+    };
+
+    const response = await fetch("/login", {
+      method: "POST",
+      body: JSON.stringify(payload),
+    });
+
+    if (!response.ok) {
+      return;
+    }
+
+    const json = await response.json();
+
+    localStorage.setItem("meds-name", json.name);
+    localStorage.setItem("meds-username", json.username);
+    localStorage.setItem("meds-pwd", json.pwd);
+
+    return {
+      name: json.name,
+      username: json.username,
+      pwd: json.pwd,
+    };
   }
 
-  function updateMedicines(newMedicines) {
-    const oldMedicines = medicines;
-    setMedicines(newMedicines);
+  async function updateUser(username, pwd) {
+    const payload = {
+      username,
+      pwd,
+    };
 
-    // also synchronize medicine data with the server,
-    // and if the synchronization fails, revert medicines to oldMedicines
+    const response = await fetch("/login", {
+      method: "POST",
+      body: JSON.stringify(payload),
+    });
+
+    if (!response.ok) {
+      return;
+    }
+
+    const json = await response.json();
+
+    localStorage.setItem("meds-name", json.name);
+    localStorage.setItem("meds-username", json.username);
+    localStorage.setItem("meds-pwd", json.pwd);
+
+    setUser({
+      name: json.name,
+      username: json.username,
+      pwd: json.pwd,
+    });
+  }
+
+  async function addUser(name, username, pwd) {
+    const payload = {
+      name,
+      username,
+      pwd,
+    };
+
+    const response = await fetch("/signup", {
+      method: "POST",
+      body: JSON.stringify(payload),
+    });
+
+    if (!response.ok) {
+      return;
+    }
+
+    const json = await response.json();
+
+    localStorage.setItem("meds-name", json.name);
+    localStorage.setItem("meds-username", json.username);
+    localStorage.setItem("meds-pwd", json.pwd);
+
+    setUser({
+      name: json.name,
+      username: json.username,
+      pwd: json.pwd,
+    });
+  }
+
+  async function initMedicines() {
+    const { username, pwd } = user;
+
+    const payload = {
+      username,
+      pwd,
+    };
+
+    const response = await fetch("/get-meds", {
+      method: "POST",
+      body: JSON.stringify(payload),
+    });
+
+    if (!response.ok) {
+      return;
+    }
+
+    const json = await response.json();
+
+    setMedicines(json);
+  }
+
+  async function updateMedicines(newMedicines) {
+    const { username, pwd } = user;
+
+    const payload = {
+      username,
+      pwd,
+      medicines: newMedicines,
+    };
+
+    const response = await fetch("/update-meds", {
+      method: "POST",
+      body: JSON.stringify(payload),
+    });
+
+    if (!response.ok) {
+      return;
+    }
+
+    const json = await response.json();
+
+    setMedicines(json);
   }
 
   return (
     <AppContext.Provider
       value={{
         user,
-        setUser,
+        updateUser,
+        addUser,
         medicines,
         updateMedicines,
       }}
